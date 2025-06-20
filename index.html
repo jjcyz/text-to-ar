@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Text-to-AR Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <!-- 3D Model Viewer -->
+      <model-viewer
+        src="teapot.usdz"
+        ar
+        ar-modes="webxr quick-look"
+        camera-controls
+        auto-rotate
+        ios-src="teapot.usdz"
+        alt="3D model of a teapot"
+        loading="eager"
+        reveal="auto"
+        ar-scale="auto"
+        ar-placement="floor"
+        ar-button>
+
+        <!-- Fallback content -->
+        <div slot="ar-button" class="ar-button">
+          View in AR
+        </div>
+
+        <!-- Loading indicator -->
+        <div slot="loading">
+          <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+            <div>Loading 3D model...</div>
+          </div>
+        </div>
+
+        <!-- Error fallback -->
+        <div slot="error">
+          <div class="error">
+            <h3>Unable to load 3D model</h3>
+            <p>Please ensure you're accessing this page from a supported device and browser.</p>
+            <p>For AR viewing, use Safari on iOS 12+ or Chrome on Android.</p>
+          </div>
+        </div>
+      </model-viewer>
+
+      <!-- Instructions -->
+      <div class="instructions">
+        <h3>How to use:</h3>
+        <ul style="text-align: left;">
+          <li><strong>On iPhone/iPad:</strong> Tap "View in AR" to open the model in AR mode</li>
+          <li><strong>On Desktop:</strong> Use mouse/touch to rotate and zoom the 3D model</li>
+          <li><strong>AR Requirements:</strong> iOS 12+ with Safari, or Android with Chrome</li>
+        </ul>
+
+        <div id="status" class="success" style="display: none;">
+          Model loaded successfully! AR should be available on supported devices.
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
